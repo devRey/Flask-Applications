@@ -1,0 +1,45 @@
+#noticiasBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+#noticiasText {
+    margin-top: 50px;
+    width: 30%;
+    font-family: "Lato", sans-serif;
+}
+
+.noticiaH1 {
+    color: #688E26;
+    font-size: 3rem;
+}
+
+.noticiaP {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+.jornalistaP {
+    margin-top: 15px;
+}
+
+#noticiasImg img {
+    margin-top: 20px;
+    width: 600px;
+    height: 600px;
+}
+
+#noticiasDescription {
+    margin-top: 20px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#noticiasDescription p {
+    font-size: 2rem;
+}
+

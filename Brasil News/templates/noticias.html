@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/noticias.css') }}">
+    <title>Notícias</title>
+</head>
+<body>
+    <nav id="navbar">
+        <ul class="navUl">
+            <h1 class="navH1">
+                Brasil News
+            </h1>
+        </ul>
+    </nav>
+
+    <section id="noticias">
+        
+    <div id="noticiasBox">
+       
+        
+        <div id="noticiasText">
+            <h1 class="noticiaH1">
+                {{ noticia.get_titulo() }}
+            </h1>
+
+            <p class="noticiaP">
+                {{ noticia.get_descricao()}}
+            </p>
+
+            
+
+            <p class="jornalistaP">
+                <a href="/jornalistas/{{ noticia.get_idJornalista() }}">
+                    Por {{ noticia.get_jornalista() }}*,  BN Rio </a>
+            </p>
+
+            
+        </div>
+       
+
+        <div id="noticiasImg">
+            <img src="{{ url_for('static', filename=noticia.get_imagem()) }}" alt="">
+        </div>
+
+        <div id="noticiasDescription">
+            <p class="noticiaH3">
+                {{ noticia.get_conteudo() }}
+            </p>
+        </div>
+        
+    </div>
+    
+    </section>
+
+    
+</body>
+</html>

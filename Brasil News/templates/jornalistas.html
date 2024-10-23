@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jornalistas.css') }}">
+    <title> {{ jornalista.get_nome() }} </title>
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul class="navUl">
+            <h1 class="navH1">
+                Brasil News
+            </h1>
+        </ul>
+    </nav>
+
+    <section id="homeJornalistas">
+        <div id="containerCardsColunistas">
+ 
+            <div class="cardsColunistas">
+
+                <div class="colunistasImg">
+                    <img src="{{ url_for('static', filename=jornalista.get_imagem()) }}" alt="">
+                </div>
+                
+                <div class="textColunistas">
+                   
+                    <h3 class="categoriaH3Jornal">{{ jornalista.get_biografia() }}</h3>
+                    <h1 class="colunistaH1">{{ jornalista.get_nome() }}</a></h1> 
+
+                    
+                </div>
+               
+            </div>
+           
+        </div>
+    </section>
+
+    <section id="homeNoticias">
+        {% if noticias %}
+                <div class="noticiasContainer">
+                    {% for noticia in noticias %}
+                        <div class="noticiaCard">
+                            <div class="noticiaImg">
+                            <img src="{{ url_for('static', filename=noticia.get_imagem()) }}" alt="Imagem da Notícia">
+                            </div>
+
+
+
+                            <div class="noticiaTexto">
+
+                                <h3>
+                                    <a href="/noticias/{{ noticia.get_id() }}">
+                                        {{ noticia.titulo }}
+                                    </a>
+                                </h3>
+                                <p>{{ noticia.resumo }}</p>
+                                <span class="noticiaData">{{ noticia.data }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Esse(a) jornalista ainda não publicou nenhuma notícia.</p>
+            {% endif %}
+        </div>
+        
+    </section>
+    
+</body>
+</html>

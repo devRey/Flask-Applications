@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Brasil News</title>
+</head>
+<body>
+
+    <div id="portais">
+        
+    </div>
+
+    <nav id="navbar">
+        <ul class="navUl">
+            <h1 class="navH1">
+                Brasil News
+            </h1>
+        </ul>
+    </nav>
+
+    <section id="homeRecentes">
+    <div id="containerCards">
+        {% for noticia in noticias %}
+        
+        <div class="cards">
+            
+            <div class="text">
+               
+                <h3 class="categoriaH3">{{ noticia.get_categoria() }}</h3>
+                <h1 class="noticiasH1"><a href="{{ url_for('noticia', id=noticia.get_id() )}}">{{ noticia.get_titulo() }}</a></h1> 
+                <h3 class="noticiasH3">{{ noticia.get_resumo() }}</h3>
+                
+            </div>
+           
+        </div>
+        {% endfor %}
+       
+    </div>
+  
+    </section>
+
+    <section id="homeNotícias">
+        <div id="containerCardsNoticias">
+            {% for noticias in noticiasList %}
+            
+            <div class="cardsNoticias">
+                
+                <div class="textNoticias">
+                   
+                    <h3 class="categoriaH3">{{ noticias.get_categoria() }}</h3>
+                    <h1 class="noticiasH1"><a href="{{ url_for('noticia', id=noticias.get_id() )}}">{{ noticias.get_titulo() }}</a></h1> 
+                    <h3 class="noticiasH3">{{ noticias.get_resumo() }}</h3>
+                    <p class="noticiasP">{{ noticias.get_data()}}</p>
+                    
+                </div>
+               
+            </div>
+            {% endfor %}
+           
+        </div>
+    </section>
+
+    <section id="homeJornalistas">
+        <div id="containerCardsJornalistas">
+            {% for jornalistas in jornalistasList %}
+
+            
+            <div class="cardsJornalistas">
+
+                <div class="jornalistasImg">
+                    <img src="{{ url_for('static', filename=jornalistas.get_imagem()) }}" alt="">
+                </div>
+                
+                <div class="textJornalistas">
+                   
+                    <h3 class="categoriaH3Jornal">{{ jornalistas.get_biografia() }}</h3>
+                    <h1 class="jornalistasH1"><a href="{{ url_for('jornalista', id=jornalistas.get_id() )}}">{{ jornalistas.get_nome() }}</a></h1> 
+
+                    
+                </div>
+               
+            </div>
+            {% endfor %}
+           
+        </div>
+    </section>
+    
+</body>
+</html>
